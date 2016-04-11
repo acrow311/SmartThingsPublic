@@ -54,8 +54,6 @@ def meterHandler(evt) {
 	def masterSwitchState = MasterSwitch.currentValue("switch") == "on"  // Get current master switch status (on = true)
     def slaveSwitchState = SlaveSwitch.currentValue("switch") == "on" // Get current slave switch status (on = true)
 	
-    log.debug "${MasterSwitch} reported energy ${meterValue}. ${MasterSwitch} on = ${masterSwitchState}, ${SlaveSwitch} on = ${slaveSwitchState} (Meter Event)."
-
 	if (slaveSwitchState) { // When the slave is on
     
     	if (masterSwitchState) { // And the master is on
@@ -85,8 +83,6 @@ def meterHandler(evt) {
 def switchHandler(evt) {
 	def masterSwitchState = MasterSwitch.currentValue("switch") == "on"  // Get current master switch status (on = true)
     def slaveSwitchState = SlaveSwitch.currentValue("switch") == "on" // Get current slave switch status (on = true)
-	
-    log.debug "${MasterSwitch} reported energy ${meterValue}. ${MasterSwitch} on = ${masterSwitchState}, ${SlaveSwitch} on = ${slaveSwitchState} (Switch Event)."
     
     if (masterSwitchState) { // The master was switched on, do nothing
     } else { // The master was switched off
